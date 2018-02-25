@@ -29,7 +29,6 @@ public class Servidor {
 				ois = new ObjectInputStream(cl.getInputStream());
 				oos.flush();
 				char op = '0';
-				String nombre = "";
 				
 				while(op != '6') {
 
