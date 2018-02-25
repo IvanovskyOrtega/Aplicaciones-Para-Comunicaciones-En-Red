@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Opciones">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Button id="uploadButton" alignment="BOTTOM_CENTER" layoutX="39.0" layoutY="190.0" mnemonicParsing="false" onAction="#cargarArchivos" opacity="0.91" prefHeight="143.0" prefWidth="251.0" text="UPLOAD" textAlignment="CENTER" >
+               <font>
+                  <Font name="Candara Bold" size="25.0" />
+               </font>
+               <graphic>
+               		<ImageView fitHeight="96.0" fitWidth="110.0" layoutX="116.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+               			<image>
+                  			<Image url="@up.png" />
+              			</image>
+            		</ImageView>
+               </graphic>
+            </Button>
+            
+        <Label alignment="CENTER" layoutX="177.0" layoutY="66.0" prefHeight="73.0" prefWidth="300.0" style="&#10;" text="archivitOS" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+          <font>
+            <Font size="50.0" />
+          </font>
+        </Label>
+            <Button id="downloadButton" alignment="BOTTOM_CENTER" layoutX="351.0" layoutY="190.0" mnemonicParsing="false" prefHeight="143.0" prefWidth="251.0" text="DOWNLOAD">
+               <font>
+                  <Font name="Candara Bold" size="25.0" />
+               </font>
+               <graphic>
+               		<ImageView fitHeight="96.0" fitWidth="110.0" layoutX="116.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+               			<image>
+                  			<Image url="@download.png" />
+              			</image>
+            		</ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="156.0" fitWidth="195.0" layoutX="16.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cloud.png" />
+               </image>
+            </ImageView>
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@BasicApplication_css/BasicApplication.css" />
+  </stylesheets>
+</VBox>
