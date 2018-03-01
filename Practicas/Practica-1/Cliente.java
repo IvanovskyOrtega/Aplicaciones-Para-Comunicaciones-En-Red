@@ -1,5 +1,3 @@
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -19,10 +17,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -45,11 +41,6 @@ public class Cliente extends JFrame {
 	static String dir = "127.0.0.1";
 	static Socket cl;
 	static Cliente frame;
-	static JFrame carga;
-	static JProgressBar barraDeProgreso;
-	static Container contenido;
-    static Border borde;
-	static JOptionPane jop;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -89,9 +80,6 @@ public class Cliente extends JFrame {
             }
 
             System.out.println();
-
-            dos2.close();
-            cl.close();
         
         }catch(Exception e){
             e.printStackTrace();
@@ -175,8 +163,7 @@ public class Cliente extends JFrame {
 						}
 					}
 
-					jop = new JOptionPane();
-					jop.showMessageDialog(null, "Archivos subidos exitosamente :)");
+					JOptionPane.showMessageDialog(null, "Archivos subidos exitosamente :)");
 					dos.close();
 					cl.close();
 					frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
@@ -191,6 +178,7 @@ public class Cliente extends JFrame {
 		
 		JButton btnDescargar = new JButton("Descargar");
 		btnDescargar.addActionListener(new ActionListener() {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					dos.writeInt(2);
@@ -198,6 +186,9 @@ public class Cliente extends JFrame {
 					int status=dis1.readInt();
 					if(status == -1){
 						System.out.println("No hay archivos para descargar");
+						dos.close();
+						cl.close();
+						frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 						return;
 					}
 					int noArchivos = dis1.read();
@@ -209,15 +200,12 @@ public class Cliente extends JFrame {
 						nombresArray[i] = nombre;
 					}
 					JComboBox archivos = new JComboBox(nombresArray);
-					Dimension max =new Dimension(500,500);
-					jop = new JOptionPane();
-					jop.setMaximumSize(max);
-					jop.showConfirmDialog(null, archivos, "¿Que archivo desea descargar?", jop.PLAIN_MESSAGE);
+					JOptionPane.showConfirmDialog(null, archivos, "Â¿Que archivo desea descargar?", JOptionPane.PLAIN_MESSAGE);
 					int n = archivos.getSelectedIndex();
 					dos.writeInt(n);
 					dos.flush();
 					recibirArchivos();
-					jop.showMessageDialog(null, "Archivo Descargado exitosamente :)");
+					JOptionPane.showMessageDialog(null, "Archivo Descargado exitosamente :)");
 					dos.close();
 					cl.close();
 					frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
