@@ -219,7 +219,7 @@ public class Cliente extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setBounds(20, 20, 200, 200);
-		ImageIcon ii = new ImageIcon("img\\cloud.png");
+		ImageIcon ii = new ImageIcon("img/cloud.png");
 		Image img = ii.getImage();
 		Image nimg = img.getScaledInstance(label.getHeight(), label.getWidth(), Image.SCALE_SMOOTH);
 		ImageIcon escalada = new ImageIcon(nimg);
