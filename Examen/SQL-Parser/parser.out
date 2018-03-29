@@ -1,0 +1,709 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> INSTRUCTIONS
+Rule 1     INSTRUCTIONS -> INSTRUCTION INSTRUCTIONS
+Rule 2     INSTRUCTIONS -> INSTRUCTION
+Rule 3     INSTRUCTION -> PETITION SEMICOLON
+Rule 4     PETITION -> CREATE_DATABASE
+Rule 5     PETITION -> CREATE_TABLE
+Rule 6     PETITION -> DROP_DATABASE
+Rule 7     PETITION -> DROP_TABLE
+Rule 8     PETITION -> USE_DATABASE
+Rule 9     PETITION -> SHOW_DATABASES
+Rule 10    PETITION -> SHOW_TABLES
+Rule 11    PETITION -> INSERT_INTO_TABLE
+Rule 12    PETITION -> UPDATE_TABLE_FIELD
+Rule 13    PETITION -> DELETE_FROM_TABLE
+Rule 14    PETITION -> SELECT_FROM_TABLE
+Rule 15    CREATE_DATABASE -> CREATE DATABASE ID
+Rule 16    CREATE_TABLE -> CREATE TABLE ID OP TABLE_FIELDS CP
+Rule 17    TABLE_FIELDS -> ID DT COMMA TABLE_FIELDS
+Rule 18    TABLE_FIELDS -> ID DT
+Rule 19    DT -> DATATYPE
+Rule 20    DT -> DATATYPE OP VALUE CP
+Rule 21    DROP_DATABASE -> DROP DATABASE ID
+Rule 22    DROP_TABLE -> DROP TABLE ID
+Rule 23    USE_DATABASE -> USE ID
+Rule 24    SHOW_DATABASES -> SHOW DATABASES
+Rule 25    SHOW_TABLES -> SHOW TABLES
+Rule 26    INSERT_INTO_TABLE -> INSERT INTO ID VALUES OP VALUES_LIST CP
+Rule 27    VALUES_LIST -> VALUE COMMA VALUES_LIST
+Rule 28    VALUES_LIST -> VALUE
+Rule 29    UPDATE_TABLE_FIELD -> UPDATE ID SET ID ASSING VALUE
+Rule 30    DELETE_FROM_TABLE -> DELETE FROM ID WHERE ID ASSING VALUE
+Rule 31    SELECT_FROM_TABLE -> SELECT ASTERISK FROM ID
+
+Terminals, with rules where they appear
+
+ASSING               : 29 30
+ASTERISK             : 31
+COMMA                : 17 27
+CP                   : 16 20 26
+CREATE               : 15 16
+DATABASE             : 15 21
+DATABASES            : 24
+DATATYPE             : 19 20
+DELETE               : 30
+DROP                 : 21 22
+FROM                 : 30 31
+ID                   : 15 16 17 18 21 22 23 26 29 29 30 30 31
+INSERT               : 26
+INTO                 : 26
+OP                   : 16 20 26
+SELECT               : 31
+SEMICOLON            : 3
+SET                  : 29
+SHOW                 : 24 25
+TABLE                : 16 22
+TABLES               : 25
+UPDATE               : 29
+USE                  : 23
+VALUE                : 20 27 28 29 30
+VALUES               : 26
+WHERE                : 30
+error                : 
+
+Nonterminals, with rules where they appear
+
+CREATE_DATABASE      : 4
+CREATE_TABLE         : 5
+DELETE_FROM_TABLE    : 13
+DROP_DATABASE        : 6
+DROP_TABLE           : 7
+DT                   : 17 18
+INSERT_INTO_TABLE    : 11
+INSTRUCTION          : 1 2
+INSTRUCTIONS         : 1 0
+PETITION             : 3
+SELECT_FROM_TABLE    : 14
+SHOW_DATABASES       : 9
+SHOW_TABLES          : 10
+TABLE_FIELDS         : 16 17
+UPDATE_TABLE_FIELD   : 12
+USE_DATABASE         : 8
+VALUES_LIST          : 26 27
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . INSTRUCTIONS
+    (1) INSTRUCTIONS -> . INSTRUCTION INSTRUCTIONS
+    (2) INSTRUCTIONS -> . INSTRUCTION
+    (3) INSTRUCTION -> . PETITION SEMICOLON
+    (4) PETITION -> . CREATE_DATABASE
+    (5) PETITION -> . CREATE_TABLE
+    (6) PETITION -> . DROP_DATABASE
+    (7) PETITION -> . DROP_TABLE
+    (8) PETITION -> . USE_DATABASE
+    (9) PETITION -> . SHOW_DATABASES
+    (10) PETITION -> . SHOW_TABLES
+    (11) PETITION -> . INSERT_INTO_TABLE
+    (12) PETITION -> . UPDATE_TABLE_FIELD
+    (13) PETITION -> . DELETE_FROM_TABLE
+    (14) PETITION -> . SELECT_FROM_TABLE
+    (15) CREATE_DATABASE -> . CREATE DATABASE ID
+    (16) CREATE_TABLE -> . CREATE TABLE ID OP TABLE_FIELDS CP
+    (21) DROP_DATABASE -> . DROP DATABASE ID
+    (22) DROP_TABLE -> . DROP TABLE ID
+    (23) USE_DATABASE -> . USE ID
+    (24) SHOW_DATABASES -> . SHOW DATABASES
+    (25) SHOW_TABLES -> . SHOW TABLES
+    (26) INSERT_INTO_TABLE -> . INSERT INTO ID VALUES OP VALUES_LIST CP
+    (29) UPDATE_TABLE_FIELD -> . UPDATE ID SET ID ASSING VALUE
+    (30) DELETE_FROM_TABLE -> . DELETE FROM ID WHERE ID ASSING VALUE
+    (31) SELECT_FROM_TABLE -> . SELECT ASTERISK FROM ID
+
+    CREATE          shift and go to state 7
+    DROP            shift and go to state 8
+    USE             shift and go to state 1
+    SHOW            shift and go to state 14
+    INSERT          shift and go to state 6
+    UPDATE          shift and go to state 16
+    DELETE          shift and go to state 21
+    SELECT          shift and go to state 10
+
+    CREATE_DATABASE                shift and go to state 13
+    DROP_DATABASE                  shift and go to state 19
+    INSTRUCTION                    shift and go to state 15
+    UPDATE_TABLE_FIELD             shift and go to state 9
+    SHOW_TABLES                    shift and go to state 4
+    USE_DATABASE                   shift and go to state 20
+    SHOW_DATABASES                 shift and go to state 17
+    DROP_TABLE                     shift and go to state 11
+    CREATE_TABLE                   shift and go to state 2
+    SELECT_FROM_TABLE              shift and go to state 18
+    DELETE_FROM_TABLE              shift and go to state 3
+    INSERT_INTO_TABLE              shift and go to state 12
+    PETITION                       shift and go to state 22
+    INSTRUCTIONS                   shift and go to state 5
+
+state 1
+
+    (23) USE_DATABASE -> USE . ID
+
+    ID              shift and go to state 23
+
+
+state 2
+
+    (5) PETITION -> CREATE_TABLE .
+
+    SEMICOLON       reduce using rule 5 (PETITION -> CREATE_TABLE .)
+
+
+state 3
+
+    (13) PETITION -> DELETE_FROM_TABLE .
+
+    SEMICOLON       reduce using rule 13 (PETITION -> DELETE_FROM_TABLE .)
+
+
+state 4
+
+    (10) PETITION -> SHOW_TABLES .
+
+    SEMICOLON       reduce using rule 10 (PETITION -> SHOW_TABLES .)
+
+
+state 5
+
+    (0) S' -> INSTRUCTIONS .
+
+
+
+state 6
+
+    (26) INSERT_INTO_TABLE -> INSERT . INTO ID VALUES OP VALUES_LIST CP
+
+    INTO            shift and go to state 24
+
+
+state 7
+
+    (15) CREATE_DATABASE -> CREATE . DATABASE ID
+    (16) CREATE_TABLE -> CREATE . TABLE ID OP TABLE_FIELDS CP
+
+    DATABASE        shift and go to state 25
+    TABLE           shift and go to state 26
+
+
+state 8
+
+    (21) DROP_DATABASE -> DROP . DATABASE ID
+    (22) DROP_TABLE -> DROP . TABLE ID
+
+    DATABASE        shift and go to state 28
+    TABLE           shift and go to state 27
+
+
+state 9
+
+    (12) PETITION -> UPDATE_TABLE_FIELD .
+
+    SEMICOLON       reduce using rule 12 (PETITION -> UPDATE_TABLE_FIELD .)
+
+
+state 10
+
+    (31) SELECT_FROM_TABLE -> SELECT . ASTERISK FROM ID
+
+    ASTERISK        shift and go to state 29
+
+
+state 11
+
+    (7) PETITION -> DROP_TABLE .
+
+    SEMICOLON       reduce using rule 7 (PETITION -> DROP_TABLE .)
+
+
+state 12
+
+    (11) PETITION -> INSERT_INTO_TABLE .
+
+    SEMICOLON       reduce using rule 11 (PETITION -> INSERT_INTO_TABLE .)
+
+
+state 13
+
+    (4) PETITION -> CREATE_DATABASE .
+
+    SEMICOLON       reduce using rule 4 (PETITION -> CREATE_DATABASE .)
+
+
+state 14
+
+    (24) SHOW_DATABASES -> SHOW . DATABASES
+    (25) SHOW_TABLES -> SHOW . TABLES
+
+    DATABASES       shift and go to state 31
+    TABLES          shift and go to state 30
+
+
+state 15
+
+    (1) INSTRUCTIONS -> INSTRUCTION . INSTRUCTIONS
+    (2) INSTRUCTIONS -> INSTRUCTION .
+    (1) INSTRUCTIONS -> . INSTRUCTION INSTRUCTIONS
+    (2) INSTRUCTIONS -> . INSTRUCTION
+    (3) INSTRUCTION -> . PETITION SEMICOLON
+    (4) PETITION -> . CREATE_DATABASE
+    (5) PETITION -> . CREATE_TABLE
+    (6) PETITION -> . DROP_DATABASE
+    (7) PETITION -> . DROP_TABLE
+    (8) PETITION -> . USE_DATABASE
+    (9) PETITION -> . SHOW_DATABASES
+    (10) PETITION -> . SHOW_TABLES
+    (11) PETITION -> . INSERT_INTO_TABLE
+    (12) PETITION -> . UPDATE_TABLE_FIELD
+    (13) PETITION -> . DELETE_FROM_TABLE
+    (14) PETITION -> . SELECT_FROM_TABLE
+    (15) CREATE_DATABASE -> . CREATE DATABASE ID
+    (16) CREATE_TABLE -> . CREATE TABLE ID OP TABLE_FIELDS CP
+    (21) DROP_DATABASE -> . DROP DATABASE ID
+    (22) DROP_TABLE -> . DROP TABLE ID
+    (23) USE_DATABASE -> . USE ID
+    (24) SHOW_DATABASES -> . SHOW DATABASES
+    (25) SHOW_TABLES -> . SHOW TABLES
+    (26) INSERT_INTO_TABLE -> . INSERT INTO ID VALUES OP VALUES_LIST CP
+    (29) UPDATE_TABLE_FIELD -> . UPDATE ID SET ID ASSING VALUE
+    (30) DELETE_FROM_TABLE -> . DELETE FROM ID WHERE ID ASSING VALUE
+    (31) SELECT_FROM_TABLE -> . SELECT ASTERISK FROM ID
+
+    $end            reduce using rule 2 (INSTRUCTIONS -> INSTRUCTION .)
+    CREATE          shift and go to state 7
+    DROP            shift and go to state 8
+    USE             shift and go to state 1
+    SHOW            shift and go to state 14
+    INSERT          shift and go to state 6
+    UPDATE          shift and go to state 16
+    DELETE          shift and go to state 21
+    SELECT          shift and go to state 10
+
+    CREATE_DATABASE                shift and go to state 13
+    DROP_DATABASE                  shift and go to state 19
+    INSTRUCTION                    shift and go to state 15
+    UPDATE_TABLE_FIELD             shift and go to state 9
+    SHOW_TABLES                    shift and go to state 4
+    USE_DATABASE                   shift and go to state 20
+    SHOW_DATABASES                 shift and go to state 17
+    DROP_TABLE                     shift and go to state 11
+    CREATE_TABLE                   shift and go to state 2
+    SELECT_FROM_TABLE              shift and go to state 18
+    DELETE_FROM_TABLE              shift and go to state 3
+    INSERT_INTO_TABLE              shift and go to state 12
+    PETITION                       shift and go to state 22
+    INSTRUCTIONS                   shift and go to state 32
+
+state 16
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE . ID SET ID ASSING VALUE
+
+    ID              shift and go to state 33
+
+
+state 17
+
+    (9) PETITION -> SHOW_DATABASES .
+
+    SEMICOLON       reduce using rule 9 (PETITION -> SHOW_DATABASES .)
+
+
+state 18
+
+    (14) PETITION -> SELECT_FROM_TABLE .
+
+    SEMICOLON       reduce using rule 14 (PETITION -> SELECT_FROM_TABLE .)
+
+
+state 19
+
+    (6) PETITION -> DROP_DATABASE .
+
+    SEMICOLON       reduce using rule 6 (PETITION -> DROP_DATABASE .)
+
+
+state 20
+
+    (8) PETITION -> USE_DATABASE .
+
+    SEMICOLON       reduce using rule 8 (PETITION -> USE_DATABASE .)
+
+
+state 21
+
+    (30) DELETE_FROM_TABLE -> DELETE . FROM ID WHERE ID ASSING VALUE
+
+    FROM            shift and go to state 34
+
+
+state 22
+
+    (3) INSTRUCTION -> PETITION . SEMICOLON
+
+    SEMICOLON       shift and go to state 35
+
+
+state 23
+
+    (23) USE_DATABASE -> USE ID .
+
+    SEMICOLON       reduce using rule 23 (USE_DATABASE -> USE ID .)
+
+
+state 24
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO . ID VALUES OP VALUES_LIST CP
+
+    ID              shift and go to state 36
+
+
+state 25
+
+    (15) CREATE_DATABASE -> CREATE DATABASE . ID
+
+    ID              shift and go to state 37
+
+
+state 26
+
+    (16) CREATE_TABLE -> CREATE TABLE . ID OP TABLE_FIELDS CP
+
+    ID              shift and go to state 38
+
+
+state 27
+
+    (22) DROP_TABLE -> DROP TABLE . ID
+
+    ID              shift and go to state 39
+
+
+state 28
+
+    (21) DROP_DATABASE -> DROP DATABASE . ID
+
+    ID              shift and go to state 40
+
+
+state 29
+
+    (31) SELECT_FROM_TABLE -> SELECT ASTERISK . FROM ID
+
+    FROM            shift and go to state 41
+
+
+state 30
+
+    (25) SHOW_TABLES -> SHOW TABLES .
+
+    SEMICOLON       reduce using rule 25 (SHOW_TABLES -> SHOW TABLES .)
+
+
+state 31
+
+    (24) SHOW_DATABASES -> SHOW DATABASES .
+
+    SEMICOLON       reduce using rule 24 (SHOW_DATABASES -> SHOW DATABASES .)
+
+
+state 32
+
+    (1) INSTRUCTIONS -> INSTRUCTION INSTRUCTIONS .
+
+    $end            reduce using rule 1 (INSTRUCTIONS -> INSTRUCTION INSTRUCTIONS .)
+
+
+state 33
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE ID . SET ID ASSING VALUE
+
+    SET             shift and go to state 42
+
+
+state 34
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM . ID WHERE ID ASSING VALUE
+
+    ID              shift and go to state 43
+
+
+state 35
+
+    (3) INSTRUCTION -> PETITION SEMICOLON .
+
+    CREATE          reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    DROP            reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    USE             reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    SHOW            reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    INSERT          reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    UPDATE          reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    DELETE          reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    SELECT          reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+    $end            reduce using rule 3 (INSTRUCTION -> PETITION SEMICOLON .)
+
+
+state 36
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO ID . VALUES OP VALUES_LIST CP
+
+    VALUES          shift and go to state 44
+
+
+state 37
+
+    (15) CREATE_DATABASE -> CREATE DATABASE ID .
+
+    SEMICOLON       reduce using rule 15 (CREATE_DATABASE -> CREATE DATABASE ID .)
+
+
+state 38
+
+    (16) CREATE_TABLE -> CREATE TABLE ID . OP TABLE_FIELDS CP
+
+    OP              shift and go to state 45
+
+
+state 39
+
+    (22) DROP_TABLE -> DROP TABLE ID .
+
+    SEMICOLON       reduce using rule 22 (DROP_TABLE -> DROP TABLE ID .)
+
+
+state 40
+
+    (21) DROP_DATABASE -> DROP DATABASE ID .
+
+    SEMICOLON       reduce using rule 21 (DROP_DATABASE -> DROP DATABASE ID .)
+
+
+state 41
+
+    (31) SELECT_FROM_TABLE -> SELECT ASTERISK FROM . ID
+
+    ID              shift and go to state 46
+
+
+state 42
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE ID SET . ID ASSING VALUE
+
+    ID              shift and go to state 47
+
+
+state 43
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM ID . WHERE ID ASSING VALUE
+
+    WHERE           shift and go to state 48
+
+
+state 44
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO ID VALUES . OP VALUES_LIST CP
+
+    OP              shift and go to state 49
+
+
+state 45
+
+    (16) CREATE_TABLE -> CREATE TABLE ID OP . TABLE_FIELDS CP
+    (17) TABLE_FIELDS -> . ID DT COMMA TABLE_FIELDS
+    (18) TABLE_FIELDS -> . ID DT
+
+    ID              shift and go to state 51
+
+    TABLE_FIELDS                   shift and go to state 50
+
+state 46
+
+    (31) SELECT_FROM_TABLE -> SELECT ASTERISK FROM ID .
+
+    SEMICOLON       reduce using rule 31 (SELECT_FROM_TABLE -> SELECT ASTERISK FROM ID .)
+
+
+state 47
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE ID SET ID . ASSING VALUE
+
+    ASSING          shift and go to state 52
+
+
+state 48
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM ID WHERE . ID ASSING VALUE
+
+    ID              shift and go to state 53
+
+
+state 49
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO ID VALUES OP . VALUES_LIST CP
+    (27) VALUES_LIST -> . VALUE COMMA VALUES_LIST
+    (28) VALUES_LIST -> . VALUE
+
+    VALUE           shift and go to state 54
+
+    VALUES_LIST                    shift and go to state 55
+
+state 50
+
+    (16) CREATE_TABLE -> CREATE TABLE ID OP TABLE_FIELDS . CP
+
+    CP              shift and go to state 56
+
+
+state 51
+
+    (17) TABLE_FIELDS -> ID . DT COMMA TABLE_FIELDS
+    (18) TABLE_FIELDS -> ID . DT
+    (19) DT -> . DATATYPE
+    (20) DT -> . DATATYPE OP VALUE CP
+
+    DATATYPE        shift and go to state 57
+
+    DT                             shift and go to state 58
+
+state 52
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE ID SET ID ASSING . VALUE
+
+    VALUE           shift and go to state 59
+
+
+state 53
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM ID WHERE ID . ASSING VALUE
+
+    ASSING          shift and go to state 60
+
+
+state 54
+
+    (27) VALUES_LIST -> VALUE . COMMA VALUES_LIST
+    (28) VALUES_LIST -> VALUE .
+
+    COMMA           shift and go to state 61
+    CP              reduce using rule 28 (VALUES_LIST -> VALUE .)
+
+
+state 55
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO ID VALUES OP VALUES_LIST . CP
+
+    CP              shift and go to state 62
+
+
+state 56
+
+    (16) CREATE_TABLE -> CREATE TABLE ID OP TABLE_FIELDS CP .
+
+    SEMICOLON       reduce using rule 16 (CREATE_TABLE -> CREATE TABLE ID OP TABLE_FIELDS CP .)
+
+
+state 57
+
+    (19) DT -> DATATYPE .
+    (20) DT -> DATATYPE . OP VALUE CP
+
+    COMMA           reduce using rule 19 (DT -> DATATYPE .)
+    CP              reduce using rule 19 (DT -> DATATYPE .)
+    OP              shift and go to state 63
+
+
+state 58
+
+    (17) TABLE_FIELDS -> ID DT . COMMA TABLE_FIELDS
+    (18) TABLE_FIELDS -> ID DT .
+
+    COMMA           shift and go to state 64
+    CP              reduce using rule 18 (TABLE_FIELDS -> ID DT .)
+
+
+state 59
+
+    (29) UPDATE_TABLE_FIELD -> UPDATE ID SET ID ASSING VALUE .
+
+    SEMICOLON       reduce using rule 29 (UPDATE_TABLE_FIELD -> UPDATE ID SET ID ASSING VALUE .)
+
+
+state 60
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM ID WHERE ID ASSING . VALUE
+
+    VALUE           shift and go to state 65
+
+
+state 61
+
+    (27) VALUES_LIST -> VALUE COMMA . VALUES_LIST
+    (27) VALUES_LIST -> . VALUE COMMA VALUES_LIST
+    (28) VALUES_LIST -> . VALUE
+
+    VALUE           shift and go to state 54
+
+    VALUES_LIST                    shift and go to state 66
+
+state 62
+
+    (26) INSERT_INTO_TABLE -> INSERT INTO ID VALUES OP VALUES_LIST CP .
+
+    SEMICOLON       reduce using rule 26 (INSERT_INTO_TABLE -> INSERT INTO ID VALUES OP VALUES_LIST CP .)
+
+
+state 63
+
+    (20) DT -> DATATYPE OP . VALUE CP
+
+    VALUE           shift and go to state 67
+
+
+state 64
+
+    (17) TABLE_FIELDS -> ID DT COMMA . TABLE_FIELDS
+    (17) TABLE_FIELDS -> . ID DT COMMA TABLE_FIELDS
+    (18) TABLE_FIELDS -> . ID DT
+
+    ID              shift and go to state 51
+
+    TABLE_FIELDS                   shift and go to state 68
+
+state 65
+
+    (30) DELETE_FROM_TABLE -> DELETE FROM ID WHERE ID ASSING VALUE .
+
+    SEMICOLON       reduce using rule 30 (DELETE_FROM_TABLE -> DELETE FROM ID WHERE ID ASSING VALUE .)
+
+
+state 66
+
+    (27) VALUES_LIST -> VALUE COMMA VALUES_LIST .
+
+    CP              reduce using rule 27 (VALUES_LIST -> VALUE COMMA VALUES_LIST .)
+
+
+state 67
+
+    (20) DT -> DATATYPE OP VALUE . CP
+
+    CP              shift and go to state 69
+
+
+state 68
+
+    (17) TABLE_FIELDS -> ID DT COMMA TABLE_FIELDS .
+
+    CP              reduce using rule 17 (TABLE_FIELDS -> ID DT COMMA TABLE_FIELDS .)
+
+
+state 69
+
+    (20) DT -> DATATYPE OP VALUE CP .
+
+    COMMA           reduce using rule 20 (DT -> DATATYPE OP VALUE CP .)
+    CP              reduce using rule 20 (DT -> DATATYPE OP VALUE CP .)
+
