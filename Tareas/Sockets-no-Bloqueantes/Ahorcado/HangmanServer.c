@@ -55,15 +55,12 @@ char* hard[20] = {
     "quebrantar","rabadillas","sabatismos","tabaqueras","ucranianas"
 };
 
+int createServerSocket(struct addrinfo *p);
 char* getString(int difficult);
 void initializeGameParameters(char *buf, CLIENT *client, int sockfd);
 void lookForCoincidences(CLIENT *client, char c, int sockfd);
 void closeClientConnection(int sockfd, CLIENT *clients, fd_set *a);
 
-/*************************** 
-**server for multi-client  
-**PF_SETSIZE=1024 
-****************************/
 int main(int argc, char **argv)
 {
 
