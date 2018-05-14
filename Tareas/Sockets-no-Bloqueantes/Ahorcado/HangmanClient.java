@@ -1,3 +1,8 @@
+/********************
+* Este programa esta basado en el Cliente Eco con sockets no
+* bloqueantes creado por el Profesor Axel Ernesto Moreno Cervantes.
+*/
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.channels.*;
@@ -5,7 +10,7 @@ import java.nio.*;
 import java.net.*;
 import java.util.Iterator;
 
-public class EcoC {
+public class HangmanClient {
     public static void main(String[] args) {
         String host = "127.0.0.1";
         int pto = 7;
